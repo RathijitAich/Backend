@@ -1,31 +1,23 @@
-// this class makes a table named login in the database with columns id, username, and password
-//@ Entity annotation is used to specify that the class is an entity and is mapped to a database table.
-
 package com.example.demo.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
 @Entity
-@Table(name = "login")
+@Table(name = "User") // Match the SQL table name
 public class User {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Id
+    @Column(nullable = false) // Ensure this maps to the correct column in the database
+    private String user_id; // Change to 'userId' for consistency with 'user_id'
+
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
-    
-    @Column(nullable = false)
-    private int age;
 
     @Column(nullable = false)
     private float weight;
@@ -36,18 +28,18 @@ public class User {
     @Column(nullable = false)
     private String gender;
 
+    @Column(name = "health_condition")
+    private String healthCondition;
+
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getUser_id() { return user_id; }
+    public void setUser_id(String user_id) { this.user_id = user_id; }
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
-
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
 
     public float getWeight() { return weight; }
     public void setWeight(float weight) { this.weight = weight; }
@@ -56,7 +48,8 @@ public class User {
     public void setHeight(float height) { this.height = height; }
 
     public String getGender() { return gender; }
-    public void setGender(String gender){this.gender = gender;}
+    public void setGender(String gender) { this.gender = gender; }
 
-    
+    public String getHealthCondition() { return healthCondition; }
+    public void setHealthCondition(String healthCondition) { this.healthCondition = healthCondition; }
 }
